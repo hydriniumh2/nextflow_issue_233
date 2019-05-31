@@ -1,0 +1,16 @@
+When using the -r command and running from a remote repository, nextflow does not properly pull from the specified revsion before attempting to run the script
+
+Steps to reproduce:
+1. Run a test on the master branch
+`nextflow run  hydriniumh2/nextflow_issue_233 -r master`
+Result:
+	Rruns correctly
+2. Try to run a test on the test_branch
+`nextflow run hydriniumh2/nextflow_issue_233 -r test_branch`
+Result: 
+N E X T F L O W  ~  version 19.04.1
+Missing project main script: [USER PATH]/.nextflow/assets/hydriniumh2/nextflow_issue_233/foo.nf
+3. Try running the exact same command again, no changes:
+`nextflow run hydriniumh2/nextflow_issue_233 -r test_branch`
+Result:
+	Runs correctly
